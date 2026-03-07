@@ -34,13 +34,16 @@ const YearHeatmapModal: React.FC<YearHeatmapModalProps> = ({ habit, onClose }) =
 
   const legendShades = useMemo(() => {
     const allShades = generateGradientShades(habit.type, habit.color);
-    // Pick 4 representative shades for the legend (e.g., levels 1, 7, 14, 21)
-    return [
+    // Pick 4 representative shades for the legend (levels 1, 7, 14, 21).
+    // For habit_breaker, color scale is inverted in cells, so reverse legend
+    // samples to keep Less -> More visually consistent left-to-right.
+    const sampledShades = [
       allShades[0],
       allShades[6],
       allShades[13],
       allShades[20]
     ];
+    return habit.type === 'habit_breaker' ? [...sampledShades].reverse() : sampledShades;
   }, [habit.type, habit.color]);
 
   return (
@@ -87,7 +90,7 @@ const YearHeatmapModal: React.FC<YearHeatmapModalProps> = ({ habit, onClose }) =
           </div>
           
           <div className="p-4 md:p-8 overflow-y-auto custom-scrollbar">
-            <div className="bg-zinc-50 rounded-2xl p-4 md:p-6 border border-zinc-100 mb-6 md:mb-8">
+            <div className="bg-zinc-50 rounded-2xl p-4 md:p-6 border border-zinc-100 mb-6 md:mb-8 flex justify-center">
               <HeatmapGrid habit={habit} year={selectedYear} />
             </div>
             

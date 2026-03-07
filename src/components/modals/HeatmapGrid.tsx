@@ -16,7 +16,7 @@ const HeatmapGrid: React.FC<HeatmapGridProps> = ({ habit, year }) => {
   const dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   return (
-    <div className="w-full">
+    <div className="w-fit max-w-full mx-auto">
       {/* Desktop Layout (Horizontal) */}
       <div className="hidden md:flex">
         {/* Day Labels */}

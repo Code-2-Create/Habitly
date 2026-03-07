@@ -52,7 +52,7 @@ const AddHabitModal: React.FC<AddHabitModalProps> = ({ onClose }) => {
                 type="text" 
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="e.g., Morning Exercise"
+                placeholder="e.g. Morning Exercise"
                 className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all text-slate-900 font-medium placeholder-slate-400"
                 required
                 autoFocus

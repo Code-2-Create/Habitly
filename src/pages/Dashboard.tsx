@@ -162,9 +162,9 @@ const Dashboard = () => {
             </div>
 
             <div className="space-y-6 lg:col-span-4">
-              <div className="border border-sky-100 bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-slate-400">Today&apos;s Progress</h3>
-                <div className="flex items-center gap-6">
+              <div className="border border-sky-100 bg-white p-6 shadow-sm text-center">
+                <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-slate-400 text-center">Today&apos;s Progress</h3>
+                <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-center">
                   <div className="relative h-20 w-20 flex-shrink-0">
                     <svg className="h-full w-full -rotate-90 transform" viewBox="0 0 36 36">
                       <path
@@ -186,7 +186,7 @@ const Dashboard = () => {
                       <span className="text-xl font-bold text-slate-900">{completionRate}%</span>
                     </div>
                   </div>
-                  <div>
+                  <div className="text-center">
                     <p className="text-lg font-semibold text-slate-900">
                       {completedToday} of {totalHabits}
                     </p>
