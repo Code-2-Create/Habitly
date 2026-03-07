@@ -1,0 +1,5 @@
+{
+  "name": "Habitly",
+  "description": "A minimalist, bento-style habit tracker web application for building positive habits and breaking negative ones.",
+  "requestFramePermissions": []
+}
