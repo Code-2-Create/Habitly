@@ -40,30 +40,30 @@ const TimeProgressBento = () => {
   }, []);
 
   return (
-    <div className="bg-white rounded-3xl shadow-sm border border-zinc-200/60 p-6 flex flex-col gap-6">
+    <div className="border border-sky-100 bg-white p-6 shadow-sm flex flex-col gap-6">
       {/* Time Remaining in Month */}
       <div>
         <div className="flex items-center gap-2 mb-4">
-          <Clock className="w-5 h-5 text-indigo-500" />
-          <h3 className="text-sm font-bold text-zinc-400 uppercase tracking-wider">Time Left in Month</h3>
+          <Clock className="w-5 h-5 text-cyan-600" />
+          <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider">Time Left in Month</h3>
         </div>
         
         <div className="grid grid-cols-4 gap-2 text-center">
-          <div className="bg-zinc-50 rounded-2xl p-3 border border-zinc-100">
-            <div className="text-2xl font-bold text-zinc-900 font-mono">{timeLeft.days}</div>
-            <div className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mt-1">Days</div>
+          <div className="bg-cyan-50 p-3 border border-cyan-100">
+            <div className="text-2xl font-bold text-slate-900 font-mono">{timeLeft.days}</div>
+            <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mt-1">Days</div>
           </div>
-          <div className="bg-zinc-50 rounded-2xl p-3 border border-zinc-100">
-            <div className="text-2xl font-bold text-zinc-900 font-mono">{timeLeft.hours.toString().padStart(2, '0')}</div>
-            <div className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mt-1">Hrs</div>
+          <div className="bg-blue-50 p-3 border border-blue-100">
+            <div className="text-2xl font-bold text-slate-900 font-mono">{timeLeft.hours.toString().padStart(2, '0')}</div>
+            <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mt-1">Hrs</div>
           </div>
-          <div className="bg-zinc-50 rounded-2xl p-3 border border-zinc-100">
-            <div className="text-2xl font-bold text-zinc-900 font-mono">{timeLeft.minutes.toString().padStart(2, '0')}</div>
-            <div className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mt-1">Mins</div>
+          <div className="bg-violet-50 p-3 border border-violet-100">
+            <div className="text-2xl font-bold text-slate-900 font-mono">{timeLeft.minutes.toString().padStart(2, '0')}</div>
+            <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mt-1">Mins</div>
           </div>
-          <div className="bg-zinc-50 rounded-2xl p-3 border border-zinc-100">
-            <div className="text-2xl font-bold text-zinc-900 font-mono">{timeLeft.seconds.toString().padStart(2, '0')}</div>
-            <div className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider mt-1">Secs</div>
+          <div className="bg-emerald-50 p-3 border border-emerald-100">
+            <div className="text-2xl font-bold text-slate-900 font-mono">{timeLeft.seconds.toString().padStart(2, '0')}</div>
+            <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mt-1">Secs</div>
           </div>
         </div>
       </div>
@@ -72,15 +72,15 @@ const TimeProgressBento = () => {
       <div>
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-blue-500" />
-            <h3 className="text-sm font-bold text-zinc-400 uppercase tracking-wider">Year Progress</h3>
+            <Calendar className="w-5 h-5 text-blue-600" />
+            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider">Year Progress</h3>
           </div>
-          <span className="text-sm font-bold text-zinc-900">{yearProgress.toFixed(1)}%</span>
+          <span className="text-sm font-bold text-slate-900">{yearProgress.toFixed(1)}%</span>
         </div>
         
-        <div className="h-3 w-full bg-zinc-100 rounded-full overflow-hidden">
+        <div className="h-3 w-full bg-slate-100 rounded-full overflow-hidden">
           <div 
-            className="h-full bg-blue-500 rounded-full transition-all duration-1000 ease-out"
+            className="h-full bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full transition-all duration-1000 ease-out"
             style={{ width: `${yearProgress}%` }}
           />
         </div>

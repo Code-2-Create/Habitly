@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { login } from '../services/authService';
-import { Activity, ArrowRight, Lock, Mail } from 'lucide-react';
+import { Activity, ArrowRight, Lock, Mail, Target } from 'lucide-react';
 import { motion } from 'motion/react';
 
 const Login = () => {
@@ -14,6 +14,7 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
     try {
       await login(email, password);
       navigate('/');
@@ -25,79 +26,110 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-50 p-4 selection:bg-emerald-100 selection:text-emerald-900">
-      <motion.div 
+    <div className="min-h-screen px-4 py-6 sm:px-6 selection:bg-cyan-100 selection:text-cyan-950">
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white p-8 sm:p-10 rounded-3xl shadow-xl shadow-zinc-200/50 border border-zinc-200/60 w-full max-w-md relative overflow-hidden"
+        className="mx-auto min-h-[calc(100vh-3rem)] max-w-6xl overflow-hidden border border-sky-100/70 bg-white/90 shadow-[0_24px_70px_-30px_rgba(14,165,233,0.45)] lg:grid lg:grid-cols-2"
       >
-        {/* Decorative background element */}
-        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-emerald-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
-        
-        <div className="flex flex-col items-center mb-8 relative z-10">
-          <div className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/30 mb-6">
-            <Activity className="w-7 h-7 text-white" />
+        <section className="relative flex flex-col justify-center border-b border-sky-100 bg-gradient-to-br from-sky-100 via-cyan-100 to-emerald-100 p-8 lg:border-b-0 lg:border-r lg:p-12">
+          <div className="mb-6 inline-flex w-fit items-center gap-2 border border-sky-200 bg-white/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-sky-700">
+            Habitly
           </div>
-          <h1 className="text-3xl font-bold text-zinc-900 tracking-tight text-center">Welcome back</h1>
-          <p className="text-zinc-500 mt-2 text-center">Sign in to continue your journey</p>
-        </div>
-
-        {error && (
-          <div className="bg-red-50 text-red-600 p-4 rounded-2xl text-sm mb-6 border border-red-100 flex items-start gap-3">
-            <div className="mt-0.5">⚠️</div>
-            <p className="font-medium">{error}</p>
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
-          <div>
-            <label className="block text-xs font-bold text-zinc-700 mb-2 uppercase tracking-wide">Email Address</label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Mail className="h-5 w-5 text-zinc-400" />
+          <h2 className="max-w-md text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
+            Every streak starts with one intentional day.
+          </h2>
+          <p className="mt-3 max-w-md text-sm text-slate-600 sm:text-base">
+            Log in to keep your momentum and build habits that compound over time.
+          </p>
+          <div className="relative mt-8 h-56 w-full max-w-lg self-center">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="h-44 w-44 rounded-full bg-emerald-300/35 animate-pulse" />
+            </div>
+            <div className="absolute inset-6 flex items-center justify-center">
+              <div className="h-36 w-36 rounded-full bg-emerald-200/50 animate-pulse [animation-delay:200ms]" />
+            </div>
+            <div className="absolute inset-12 flex items-center justify-center">
+              <div className="flex h-28 w-28 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/30">
+                <Target className="h-12 w-12" />
               </div>
-              <input 
-                type="email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-11 pr-4 py-3.5 bg-zinc-50 border border-zinc-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all text-zinc-900 font-medium placeholder-zinc-400"
-                placeholder="you@example.com"
-                required
-              />
             </div>
           </div>
-          <div>
-            <label className="block text-xs font-bold text-zinc-700 mb-2 uppercase tracking-wide">Password</label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-zinc-400" />
+        </section>
+
+        <section className="flex items-center justify-center p-6 sm:p-10 lg:p-12">
+          <div className="w-full max-w-md">
+            <div className="mb-8 flex flex-col items-center">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center bg-gradient-to-br from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25">
+                <Activity className="h-6 w-6" />
               </div>
-              <input 
-                type="password" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-11 pr-4 py-3.5 bg-zinc-50 border border-zinc-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all text-zinc-900 font-medium placeholder-zinc-400"
-                placeholder="••••••••"
-                required
-              />
+              <h1 className="text-center text-3xl font-bold tracking-tight text-slate-900">Welcome back</h1>
+              <p className="mt-2 text-center text-slate-500">Sign in to continue your habit journey</p>
             </div>
-          </div>
-          <button 
-            type="submit" 
-            disabled={loading}
-            className="w-full bg-zinc-900 text-white py-4 rounded-2xl font-bold hover:bg-zinc-800 transition-all disabled:opacity-50 active:scale-95 shadow-sm flex items-center justify-center gap-2 mt-2"
-          >
-            {loading ? 'Signing in...' : (
-              <>
-                Sign In <ArrowRight size={18} />
-              </>
+
+            {error && (
+              <div className="mb-6 flex items-start gap-3 border border-rose-200 bg-rose-50 p-3 text-sm text-rose-700">
+                <div className="mt-0.5 text-base">!</div>
+                <p className="font-medium">{error}</p>
+              </div>
             )}
-          </button>
-        </form>
-        
-        <p className="mt-8 text-center text-sm text-zinc-500 font-medium relative z-10">
-          Don't have an account? <Link to="/signup" className="text-emerald-600 hover:text-emerald-700 font-bold ml-1 transition-colors">Sign up</Link>
-        </p>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="mb-2 block text-xs font-bold uppercase tracking-wide text-slate-700">Email Address</label>
+                <div className="relative">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                    <Mail className="h-5 w-5 text-slate-400" />
+                  </div>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full border border-slate-200 bg-slate-50 py-3.5 pl-11 pr-4 font-medium text-slate-900 transition-all placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/35"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="mb-2 block text-xs font-bold uppercase tracking-wide text-slate-700">Password</label>
+                <div className="relative">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                    <Lock className="h-5 w-5 text-slate-400" />
+                  </div>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full border border-slate-200 bg-slate-50 py-3.5 pl-11 pr-4 font-medium text-slate-900 transition-all placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/35"
+                    placeholder="********"
+                    required
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="mt-2 flex w-full items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 py-3.5 font-bold text-white transition-all hover:brightness-105 disabled:opacity-60"
+              >
+                {loading ? 'Signing in...' : (
+                  <>
+                    Sign In <ArrowRight size={18} />
+                  </>
+                )}
+              </button>
+            </form>
+
+            <p className="mt-7 text-center text-sm font-medium text-slate-500">
+              Do not have an account?
+              <Link to="/signup" className="ml-1 font-bold text-cyan-700 transition-colors hover:text-cyan-800">
+                Sign up
+              </Link>
+            </p>
+          </div>
+        </section>
       </motion.div>
     </div>
   );

@@ -10,7 +10,14 @@ import {
   serverTimestamp,
   getDoc
 } from "firebase/firestore";
-import { db } from "./firebaseConfig";
+import { db, firebaseConfigError } from "./firebaseConfig";
+
+const requireDb = () => {
+  if (!db) {
+    throw new Error(firebaseConfigError || "Firestore is not configured.");
+  }
+  return db;
+};
 
 export interface Habit {
   id: string;
@@ -25,7 +32,8 @@ export interface Habit {
 }
 
 export const createHabit = async (userId: string, habitData: Omit<Habit, "id" | "userId" | "createdAt" | "currentStreak" | "longestStreak" | "logs">) => {
-  const habitRef = doc(collection(db, "habits"));
+  const database = requireDb();
+  const habitRef = doc(collection(database, "habits"));
   const newHabit: Habit = {
     id: habitRef.id,
     userId,
@@ -40,12 +48,12 @@ export const createHabit = async (userId: string, habitData: Omit<Habit, "id" | 
 };
 
 export const deleteHabit = async (userId: string, habitId: string) => {
-  const habitRef = doc(db, "habits", habitId);
+  const habitRef = doc(requireDb(), "habits", habitId);
   await deleteDoc(habitRef);
 };
 
 export const getUserHabits = async (userId: string): Promise<Habit[]> => {
-  const habitsRef = collection(db, "habits");
+  const habitsRef = collection(requireDb(), "habits");
   const q = query(habitsRef, where("userId", "==", userId));
   const querySnapshot = await getDocs(q);
   const habits: Habit[] = [];
@@ -56,12 +64,12 @@ export const getUserHabits = async (userId: string): Promise<Habit[]> => {
 };
 
 export const updateHabit = async (userId: string, habitId: string, updates: Partial<Habit>) => {
-  const habitRef = doc(db, "habits", habitId);
+  const habitRef = doc(requireDb(), "habits", habitId);
   await updateDoc(habitRef, updates);
 };
 
 export const toggleHabitCompletion = async (userId: string, habitId: string, date: string, completed: boolean, currentStreak: number, longestStreak: number) => {
-  const habitRef = doc(db, "habits", habitId);
+  const habitRef = doc(requireDb(), "habits", habitId);
   await updateDoc(habitRef, {
     [`logs.${date}`]: !completed,
     currentStreak,

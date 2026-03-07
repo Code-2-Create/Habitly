@@ -1,3 +1,4 @@
+<!-- <<<<<<< HEAD
 <div align="center">
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
@@ -17,7 +18,7 @@ View your app in AI Studio: https://ai.studio/apps/0548d89b-23d9-4678-978d-3812f
    `npm install`
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
-   `npm run dev`
+   `npm run dev` -->
 
 # Habitly
 
@@ -71,14 +72,4 @@ Building habits requires consistency and visibility. Habitly helps users:
 
 The goal of Habitly is to make habit tracking **simple, motivating, and visually engaging**, helping users gradually improve their daily lives.
 
----
 
-## Getting Started
-
-Clone the repository and run the development server:
-
-```bash
-git clone https://github.com/yourusername/habitly.git
-cd habitly
-npm install
-npm run dev

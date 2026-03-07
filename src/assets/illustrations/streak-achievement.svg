@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <rect width="640" height="360" rx="28" fill="#FFF7ED"/>
+  <circle cx="112" cy="82" r="26" fill="#FDBA74" opacity=".65"/>
+  <circle cx="536" cy="70" r="22" fill="#FDE68A" opacity=".8"/>
+  <ellipse cx="320" cy="300" rx="210" ry="28" fill="#FED7AA"/>
+  <path d="M238 265L196 212C168 177 173 126 210 109C236 97 267 108 285 133C303 107 334 97 360 109C397 126 402 177 374 212L332 265H238Z" fill="#F97316"/>
+  <path d="M285 240L263 205C248 181 251 153 271 144C285 137 302 143 311 157C320 143 337 137 351 144C371 153 374 181 359 205L337 240H285Z" fill="#FB923C"/>
+  <circle cx="320" cy="140" r="44" fill="#F8FAFC"/>
+  <path d="M320 103L330 127H356L336 142L344 166L320 152L296 166L304 142L284 127H310L320 103Z" fill="#F59E0B"/>
+  <rect x="146" y="178" width="76" height="116" rx="18" fill="#A5B4FC"/>
+  <rect x="418" y="178" width="76" height="116" rx="18" fill="#7DD3FC"/>
+  <path d="M132 140L141 123L149 140L168 142L154 154L157 172L141 163L126 172L128 154L114 142L132 140Z" fill="#FB7185"/>
+  <path d="M496 120L505 103L514 120L532 122L519 133L522 151L505 142L489 151L491 133L478 122L496 120Z" fill="#22C55E"/>
+</svg>

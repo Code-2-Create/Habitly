@@ -5,20 +5,27 @@ import {
   onAuthStateChanged,
   User
 } from "firebase/auth";
-import { auth } from "./firebaseConfig";
+import { auth, firebaseConfigError } from "./firebaseConfig";
+
+const requireAuth = () => {
+  if (!auth) {
+    throw new Error(firebaseConfigError || "Firebase Auth is not configured.");
+  }
+  return auth;
+};
 
 export const signup = (email: string, password: string) => {
-  return createUserWithEmailAndPassword(auth, email, password);
+  return createUserWithEmailAndPassword(requireAuth(), email, password);
 };
 
 export const login = (email: string, password: string) => {
-  return signInWithEmailAndPassword(auth, email, password);
+  return signInWithEmailAndPassword(requireAuth(), email, password);
 };
 
 export const logout = () => {
-  return signOut(auth);
+  return signOut(requireAuth());
 };
 
 export const subscribeToAuthChanges = (callback: (user: User | null) => void) => {
-  return onAuthStateChanged(auth, callback);
+  return onAuthStateChanged(requireAuth(), callback);
 };

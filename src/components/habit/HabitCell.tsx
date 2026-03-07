@@ -19,7 +19,7 @@ const HabitCell: React.FC<HabitCellProps> = ({ habit, date, completed, streak, o
       whileTap={{ scale: 0.85 }}
       whileHover={{ scale: 1.05 }}
       onClick={onToggle}
-      className={`w-6 h-6 sm:w-7 sm:h-7 md:w-10 md:h-10 rounded-md md:rounded-[14px] border transition-colors duration-300 flex items-center justify-center select-none outline-none focus:outline-none caret-transparent relative
+      className={`w-5 h-5 sm:w-6 sm:h-6 md:w-10 md:h-10 rounded-md md:rounded-[14px] border transition-colors duration-300 flex items-center justify-center select-none outline-none focus:outline-none caret-transparent relative
         ${completed ? 'border-transparent shadow-sm' : 'border-zinc-200 bg-white hover:bg-zinc-50'}
       `}
       style={{
@@ -33,7 +33,7 @@ const HabitCell: React.FC<HabitCellProps> = ({ habit, date, completed, streak, o
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
         >
-          <svg className="w-3 h-3 md:w-5 md:h-5 text-white/90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+          <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-5 md:h-5 text-white/90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </motion.div>

@@ -28,7 +28,7 @@ export const HabitProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [loading, setLoading] = useState(true);
   const { currentUser } = useAuth();
 
-  const fetchHabits = async () => {
+  const fetchHabits = async (showLoader = true) => {
     if (!currentUser) {
       const local = localStorage.getItem('habitly_local_habits');
       if (local) {
@@ -36,17 +36,17 @@ export const HabitProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       } else {
         setHabits([]);
       }
-      setLoading(false);
+      if (showLoader) setLoading(false);
       return;
     }
-    setLoading(true);
+    if (showLoader) setLoading(true);
     try {
       const fetchedHabits = await getUserHabits(currentUser.uid);
       setHabits(fetchedHabits);
     } catch (error) {
       console.error("Error fetching habits:", error);
     } finally {
-      setLoading(false);
+      if (showLoader) setLoading(false);
     }
   };
 
@@ -132,7 +132,7 @@ export const HabitProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           // Background update
           toggleHabitCompletion(currentUser.uid, habitId, date, completed, currentStreak, longestStreak).catch(e => {
             console.error("Failed to sync toggle:", e);
-            fetchHabits(); // Revert on failure
+            fetchHabits(false); // Revert on failure without global loading flicker
           });
 
           return { ...habit, logs: newLogs, currentStreak, longestStreak };

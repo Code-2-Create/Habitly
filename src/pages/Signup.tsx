@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { signup } from '../services/authService';
 import { Activity, ArrowRight, Lock, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
+import AppIllustration from '../components/illustrations/AppIllustration';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -14,6 +15,7 @@ const Signup = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
     try {
       await signup(email, password);
       navigate('/');
@@ -25,80 +27,103 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-50 p-4 selection:bg-emerald-100 selection:text-emerald-900">
-      <motion.div 
+    <div className="min-h-screen px-4 py-6 sm:px-6 selection:bg-violet-100 selection:text-violet-950">
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white p-8 sm:p-10 rounded-3xl shadow-xl shadow-zinc-200/50 border border-zinc-200/60 w-full max-w-md relative overflow-hidden"
+        className="mx-auto min-h-[calc(100vh-3rem)] max-w-6xl overflow-hidden border border-violet-100/70 bg-white/90 shadow-[0_24px_70px_-30px_rgba(124,58,237,0.4)] lg:grid lg:grid-cols-2"
       >
-        {/* Decorative background element */}
-        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-emerald-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
-        
-        <div className="flex flex-col items-center mb-8 relative z-10">
-          <div className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/30 mb-6">
-            <Activity className="w-7 h-7 text-white" />
+        <section className="relative flex flex-col justify-center border-b border-violet-100 bg-gradient-to-br from-violet-100 via-fuchsia-100 to-sky-100 p-8 lg:border-b-0 lg:border-r lg:p-12">
+          <div className="mb-6 inline-flex w-fit items-center gap-2 border border-violet-200 bg-white/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-violet-700">
+            New Journey
           </div>
-          <h1 className="text-3xl font-bold text-zinc-900 tracking-tight text-center">Create account</h1>
-          <p className="text-zinc-500 mt-2 text-center">Start tracking your habits today</p>
-        </div>
+          <h2 className="max-w-md text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
+            Start building better habits today.
+          </h2>
+          <p className="mt-3 max-w-md text-sm text-slate-600 sm:text-base">
+            Create your account and turn daily actions into long-term progress.
+          </p>
+          <AppIllustration
+            variant="signup"
+            alt="A person climbing progress steps"
+            className="mt-8 w-full max-w-lg self-center"
+          />
+        </section>
 
-        {error && (
-          <div className="bg-red-50 text-red-600 p-4 rounded-2xl text-sm mb-6 border border-red-100 flex items-start gap-3">
-            <div className="mt-0.5">⚠️</div>
-            <p className="font-medium">{error}</p>
-          </div>
-        )}
+        <section className="flex items-center justify-center p-6 sm:p-10 lg:p-12">
+          <div className="w-full max-w-md">
+            <div className="mb-8 flex flex-col items-center">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white shadow-lg shadow-violet-500/25">
+                <Activity className="h-6 w-6" />
+              </div>
+              <h1 className="text-center text-3xl font-bold tracking-tight text-slate-900">Create account</h1>
+              <p className="mt-2 text-center text-slate-500">Begin your consistency journey now</p>
+            </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
-          <div>
-            <label className="block text-xs font-bold text-zinc-700 mb-2 uppercase tracking-wide">Email Address</label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Mail className="h-5 w-5 text-zinc-400" />
+            {error && (
+              <div className="mb-6 flex items-start gap-3 border border-rose-200 bg-rose-50 p-3 text-sm text-rose-700">
+                <div className="mt-0.5 text-base">!</div>
+                <p className="font-medium">{error}</p>
               </div>
-              <input 
-                type="email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-11 pr-4 py-3.5 bg-zinc-50 border border-zinc-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all text-zinc-900 font-medium placeholder-zinc-400"
-                placeholder="you@example.com"
-                required
-              />
-            </div>
-          </div>
-          <div>
-            <label className="block text-xs font-bold text-zinc-700 mb-2 uppercase tracking-wide">Password</label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-zinc-400" />
-              </div>
-              <input 
-                type="password" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-11 pr-4 py-3.5 bg-zinc-50 border border-zinc-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all text-zinc-900 font-medium placeholder-zinc-400"
-                placeholder="••••••••"
-                required
-                minLength={6}
-              />
-            </div>
-          </div>
-          <button 
-            type="submit" 
-            disabled={loading}
-            className="w-full bg-zinc-900 text-white py-4 rounded-2xl font-bold hover:bg-zinc-800 transition-all disabled:opacity-50 active:scale-95 shadow-sm flex items-center justify-center gap-2 mt-2"
-          >
-            {loading ? 'Creating account...' : (
-              <>
-                Sign Up <ArrowRight size={18} />
-              </>
             )}
-          </button>
-        </form>
-        
-        <p className="mt-8 text-center text-sm text-zinc-500 font-medium relative z-10">
-          Already have an account? <Link to="/login" className="text-emerald-600 hover:text-emerald-700 font-bold ml-1 transition-colors">Log in</Link>
-        </p>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="mb-2 block text-xs font-bold uppercase tracking-wide text-slate-700">Email Address</label>
+                <div className="relative">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                    <Mail className="h-5 w-5 text-slate-400" />
+                  </div>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full border border-slate-200 bg-slate-50 py-3.5 pl-11 pr-4 font-medium text-slate-900 transition-all placeholder:text-slate-400 focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-400/35"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="mb-2 block text-xs font-bold uppercase tracking-wide text-slate-700">Password</label>
+                <div className="relative">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                    <Lock className="h-5 w-5 text-slate-400" />
+                  </div>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full border border-slate-200 bg-slate-50 py-3.5 pl-11 pr-4 font-medium text-slate-900 transition-all placeholder:text-slate-400 focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-400/35"
+                    placeholder="At least 6 characters"
+                    required
+                    minLength={6}
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="mt-2 flex w-full items-center justify-center gap-2 bg-gradient-to-r from-violet-500 to-fuchsia-600 py-3.5 font-bold text-white transition-all hover:brightness-105 disabled:opacity-60"
+              >
+                {loading ? 'Creating account...' : (
+                  <>
+                    Sign Up <ArrowRight size={18} />
+                  </>
+                )}
+              </button>
+            </form>
+
+            <p className="mt-7 text-center text-sm font-medium text-slate-500">
+              Already have an account?
+              <Link to="/login" className="ml-1 font-bold text-violet-700 transition-colors hover:text-violet-800">
+                Log in
+              </Link>
+            </p>
+          </div>
+        </section>
       </motion.div>
     </div>
   );

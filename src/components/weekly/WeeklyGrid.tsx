@@ -109,26 +109,26 @@ const WeeklyGrid: React.FC<WeeklyGridProps> = ({ habits }) => {
             {/* Daily Summary */}
             {habits.length > 0 && (
               <div className="flex flex-row items-center gap-1 md:gap-4 mt-4 md:mt-6 pt-3 md:pt-4 border-t border-zinc-100 w-full">
-                <div className="text-[10px] md:text-xs font-bold text-zinc-400 uppercase tracking-wider items-center w-[70px] sm:w-[100px] md:w-[200px] flex-shrink-0 truncate">
+                <div className="text-[10px] md:text-xs font-bold text-zinc-400 uppercase tracking-wider items-center w-[76px] sm:w-[108px] md:w-[200px] flex-shrink-0 truncate">
                   Summary
                 </div>
                 
                 <div className="flex items-center justify-between flex-1 gap-0.5 sm:gap-1 md:gap-2">
-                  <div className="w-4 sm:w-5 md:w-[30px]" /> {/* Spacer for left arrow */}
+                  <div className="w-5 sm:w-6 md:w-[30px]" />
                   {dailySummary.map(day => {
                     const isAllDone = day.count === day.total && day.total > 0;
                     return (
-                      <div key={day.date} className="w-6 sm:w-7 md:w-10 flex justify-center">
-                        <span className={`text-[8px] md:text-xs font-semibold ${isAllDone ? 'text-emerald-500' : 'text-zinc-400'}`}>
+                      <div key={day.date} className="w-5 sm:w-6 md:w-10 flex justify-center">
+                        <span className={`text-[8px] md:text-xs font-semibold ${isAllDone ? 'text-cyan-600' : 'text-slate-400'}`}>
                           {day.count}/{day.total}
                         </span>
                       </div>
                     );
                   })}
-                  <div className="w-4 sm:w-5 md:w-[30px]" /> {/* Spacer for right arrow */}
+                  <div className="w-5 sm:w-6 md:w-[30px]" />
                 </div>
                 
-                <div className="w-[68px] md:w-[132px] flex-shrink-0"></div>
+                <div className="w-[68px] sm:w-[84px] md:w-[112px] flex-shrink-0"></div>
               </div>
             )}
           </motion.div>
