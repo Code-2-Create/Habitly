@@ -10,7 +10,9 @@ const firebaseEnv = {
   VITE_FIREBASE_AUTH_DOMAIN: normalizeEnvValue(import.meta.env.VITE_FIREBASE_AUTH_DOMAIN),
   VITE_FIREBASE_PROJECT_ID: normalizeEnvValue(import.meta.env.VITE_FIREBASE_PROJECT_ID),
   VITE_FIREBASE_STORAGE_BUCKET: normalizeEnvValue(import.meta.env.VITE_FIREBASE_STORAGE_BUCKET),
-  VITE_FIREBASE_MESSAGING_SENDER_ID: normalizeEnvValue(import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID),
+  VITE_FIREBASE_MESSAGING_SENDER_ID: normalizeEnvValue(
+    import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID ?? import.meta.env.VITE_FIREBASE_MESSAGING_ID
+  ),
   VITE_FIREBASE_APP_ID: normalizeEnvValue(import.meta.env.VITE_FIREBASE_APP_ID),
 };
 
