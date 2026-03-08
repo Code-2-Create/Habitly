@@ -34,9 +34,6 @@ const Signup = () => {
         className="mx-auto min-h-[calc(100vh-3rem)] max-w-6xl overflow-hidden border border-violet-100/70 bg-white/90 shadow-[0_24px_70px_-30px_rgba(124,58,237,0.4)] lg:grid lg:grid-cols-2"
       >
         <section className="relative flex flex-col justify-center border-b border-violet-100 bg-gradient-to-br from-violet-100 via-fuchsia-100 to-sky-100 p-8 lg:border-b-0 lg:border-r lg:p-12">
-          <div className="mb-6 inline-flex w-fit items-center gap-2 border border-violet-200 bg-white/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-violet-700">
-            New Journey
-          </div>
           <h2 className="max-w-md text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
             Start building better habits today.
           </h2>
@@ -45,8 +42,8 @@ const Signup = () => {
           </p>
           <AppIllustration
             variant="signup"
-            alt="A person climbing progress steps"
-            className="mt-8 w-full max-w-lg self-center"
+            alt="Stylized illustration for signup"
+            className="mt-8 h-60 w-60 self-center rounded-3xl border border-white/60 bg-white/55 p-8 shadow-lg shadow-violet-300/30 object-contain backdrop-blur-sm sm:h-64 sm:w-64"
           />
         </section>
 

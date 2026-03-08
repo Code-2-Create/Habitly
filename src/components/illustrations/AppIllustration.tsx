@@ -1,6 +1,6 @@
 import React from 'react';
-import journeyLogin from '../../assets/illustrations/journey-login.svg';
-import journeySignup from '../../assets/illustrations/journey-signup.svg';
+import loginIllustration from '../../assets/illustrations/login.webp';
+import signinIllustration from '../../assets/illustrations/signin.webp';
 import emptyDashboard from '../../assets/illustrations/empty-dashboard.svg';
 import streakAchievement from '../../assets/illustrations/streak-achievement.svg';
 
@@ -17,8 +17,8 @@ interface AppIllustrationProps {
 }
 
 const illustrationMap: Record<IllustrationVariant, string> = {
-  login: journeyLogin,
-  signup: journeySignup,
+  login: loginIllustration,
+  signup: signinIllustration,
   emptyDashboard,
   streakAchievement,
 };

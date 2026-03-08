@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { login } from '../services/authService';
-import { Activity, ArrowRight, Lock, Mail, Target } from 'lucide-react';
+import { Activity, ArrowRight, Lock, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
+import loginIllustration from '../assets/illustrations/login.webp';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -33,28 +34,19 @@ const Login = () => {
         className="mx-auto min-h-[calc(100vh-3rem)] max-w-6xl overflow-hidden border border-sky-100/70 bg-white/90 shadow-[0_24px_70px_-30px_rgba(14,165,233,0.45)] lg:grid lg:grid-cols-2"
       >
         <section className="relative flex flex-col justify-center border-b border-sky-100 bg-gradient-to-br from-sky-100 via-cyan-100 to-emerald-100 p-8 lg:border-b-0 lg:border-r lg:p-12">
-          <div className="mb-6 inline-flex w-fit items-center gap-2 border border-sky-200 bg-white/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-sky-700">
-            Habitly
-          </div>
           <h2 className="max-w-md text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
             Every streak starts with one intentional day.
           </h2>
           <p className="mt-3 max-w-md text-sm text-slate-600 sm:text-base">
             Log in to keep your momentum and build habits that compound over time.
           </p>
-          <div className="relative mt-8 h-56 w-full max-w-lg self-center">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="h-44 w-44 rounded-full bg-emerald-300/35 animate-pulse" />
-            </div>
-            <div className="absolute inset-6 flex items-center justify-center">
-              <div className="h-36 w-36 rounded-full bg-emerald-200/50 animate-pulse [animation-delay:200ms]" />
-            </div>
-            <div className="absolute inset-12 flex items-center justify-center">
-              <div className="flex h-28 w-28 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/30">
-                <Target className="h-12 w-12" />
-              </div>
-            </div>
-          </div>
+          <img
+            src={loginIllustration}
+            alt="Login illustration"
+            className="mt-8 h-60 w-60 self-center rounded-3xl border border-white/60 bg-white/55 p-8 shadow-lg shadow-cyan-300/30 object-contain backdrop-blur-sm sm:h-64 sm:w-64"
+            loading="lazy"
+            decoding="async"
+          />
         </section>
 
         <section className="flex items-center justify-center p-6 sm:p-10 lg:p-12">

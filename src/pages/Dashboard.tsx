@@ -87,11 +87,11 @@ const Dashboard = () => {
           <div className="flex items-center gap-4">
             {currentUser ? (
               <>
-                <div className="hidden items-center gap-2 rounded-full bg-sky-50 px-3 py-1.5 sm:flex">
+                <div className="flex items-center gap-2 sm:rounded-full sm:bg-sky-50 sm:px-3 sm:py-1.5">
                   <div className="flex h-6 w-6 items-center justify-center rounded-full bg-cyan-100 text-xs font-bold text-cyan-700">
                     {currentUser.email?.[0].toUpperCase()}
                   </div>
-                  <span className="text-sm font-medium text-slate-600">{currentUser.email}</span>
+                  <span className="hidden text-sm font-medium text-slate-600 sm:inline">{currentUser.email}</span>
                 </div>
                 <button
                   onClick={logout}
